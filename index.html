@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workspace Inteligente</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Workspace Inteligente</h1>
+
+    <div class="input-group">
+      <input type="text" id="taskInput" placeholder="Nueva tarea">
+      <button id="addBtn">Agregar</button>
+    </div>
+
+    <div class="filters">
+      <button data-filter="all">Todas</button>
+      <button data-filter="pending">Pendientes</button>
+      <button data-filter="completed">Completadas</button>
+    </div>
+
+    <ul id="taskList"></ul>
+
+    <p id="counter"></p>
+
+    <button id="themeBtn">Modo oscuro</button>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
