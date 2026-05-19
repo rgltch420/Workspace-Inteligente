@@ -7,18 +7,10 @@ const themeBtn = document.getElementById("themeBtn");
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 let currentFilter = sessionStorage.getItem("filter") || "all";
 
-
-// ==========================
-// GUARDAR EN LOCALSTORAGE
-// ==========================
 function saveTasks() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-
-// ==========================
-// RENDERIZAR TAREAS
-// ==========================
 function renderTasks() {
   taskList.innerHTML = "";
 
@@ -61,10 +53,6 @@ function renderTasks() {
   updateCounter();
 }
 
-
-// ==========================
-// AGREGAR TAREA
-// ==========================
 addBtn.addEventListener("click", () => {
 
   const text = taskInput.value.trim();
@@ -87,10 +75,6 @@ addBtn.addEventListener("click", () => {
   sessionStorage.removeItem("draft");
 });
 
-
-// ==========================
-// COMPLETAR TAREA
-// ==========================
 function toggleTask(id) {
 
   tasks = tasks.map(task => {
@@ -106,10 +90,6 @@ function toggleTask(id) {
   renderTasks();
 }
 
-
-// ==========================
-// ELIMINAR TAREA
-// ==========================
 function deleteTask(id) {
 
   tasks = tasks.filter(task => task.id !== id);
@@ -117,11 +97,6 @@ function deleteTask(id) {
   saveTasks();
   renderTasks();
 }
-
-
-// ==========================
-// FILTROS
-// ==========================
 document.querySelectorAll("[data-filter]")
 .forEach(button => {
 
@@ -129,17 +104,13 @@ document.querySelectorAll("[data-filter]")
 
     currentFilter = button.dataset.filter;
 
-    // sessionStorage
+  
     sessionStorage.setItem("filter", currentFilter);
 
     renderTasks();
   });
 });
 
-
-// ==========================
-// BORRADOR TEMPORAL
-// ==========================
 taskInput.addEventListener("input", () => {
 
   sessionStorage.setItem("draft", taskInput.value);
@@ -148,9 +119,6 @@ taskInput.addEventListener("input", () => {
 taskInput.value = sessionStorage.getItem("draft") || "";
 
 
-// ==========================
-// CONTADOR
-// ==========================
 function updateCounter() {
 
   const completed = tasks.filter(task => task.completed).length;
@@ -159,10 +127,6 @@ function updateCounter() {
     `Completadas: ${completed} / ${tasks.length}`;
 }
 
-
-// ==========================
-// MODO OSCURO
-// ==========================
 const darkMode = localStorage.getItem("darkMode");
 
 if (darkMode === "true") {
@@ -179,8 +143,4 @@ themeBtn.addEventListener("click", () => {
   );
 });
 
-
-// ==========================
-// INICIO
-// ==========================
 renderTasks();
